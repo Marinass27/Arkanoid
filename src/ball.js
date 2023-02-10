@@ -1,20 +1,22 @@
-function Ball() {
-  this.speedX = -2;
-  this.speedY = -1;
-  this.top = 600
-  this.height = 25
-  this.width = 25
-  this.left = 288
-  this.sprite = document.querySelector('.ball')
+
+
+class Ball extends MovableElement{
+  constructor (width, height, top, left, speedX = -2, speedY= -1){
+    super (width, height, top, left);
+    this.sprite = document.querySelector('.ball')
+    this.speedX = speedX;
+    this.speedY = speedY;
+  }
   
-  this.collidesWithSomething = function () {
+  
+  collidesWithSomething() {
     return this.collidesWithPlatform
       || this.collidesWithLateralWalls
       || this.collidesWithTopWall
       || this.collidesWithBlocks
       || this.collidesWithBottom
   }
-  this.collidesWithPlatform = function () { // el top ball + hight ball != top de platform*/
+  collidesWithPlatform() { // el top ball + hight ball != top de platform*/
     if (this.top + this.height >= platform.top
       && this.left <= platform.left + platform.width
       && this.left + this.width >= platform.left) {
@@ -25,7 +27,7 @@ function Ball() {
     }
   }
 
-  this.collidesWithLateralWalls = function () {
+  collidesWithLateralWalls() {
     if (this.left + this.width > 600 || this.left < 0) {
       boing2.play();
       this.speedX *= (-1);
@@ -33,13 +35,13 @@ function Ball() {
     
   }
 
-  this.collidesWithTopWall = function () {
+  collidesWithTopWall() {
     if (this.top <= 0) {
       boing2.play();
       this.speedY *= (-1);
     }
   }
-  this.collidesWithBlocks = function () {
+  collidesWithBlocks() {
     if (this.top <= blockCollectionInstance.top + (blockCollectionInstance.top / blockCollectionInstance.rows) + blockCollectionInstance.height // abajo
       && this.left + this.width >= blockCollectionInstance.left // izquierda
       && this.left <= blockCollectionInstance.left + blockCollectionInstance.width // derecha
@@ -56,21 +58,23 @@ function Ball() {
       }
     }
   }
-  this.collidesWithBottom = function () {
+  collidesWithBottom() {
     if (this.top + this.height > 800) {
       game.loseLife()
     }
   }
 
-  this.move = function () {
+  move() {
     if (!this.collidesWithPlatform() && !this.collidesWithLateralWalls() && !this.collidesWithTopWall() && !this.collidesWithBlocks() && !this.collidesWithBottom()) {
+
+      
       this.left += this.speedX;
       this.sprite.style.left = this.left + "px";
       this.top += this.speedY;
       this.sprite.style.top = this.top + "px";
     }
   }
-  this.restartPosition = function (){
+  restartPosition() {
     this.top = 600
     this.left = 288 
     this.sprite.style.top = this.top + 'px'

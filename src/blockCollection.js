@@ -1,12 +1,16 @@
-function BlockCollection(width, height, rows, columns, left, top) {
+class BlockCollection extends UnmovableElement{
+  constructor(width, height, rows, columns, left, top){
 
+
+  super (width, height, top, left);
   this.blocks = []
-  this.width = width
-  this.height = height
-  this.top = top
-  this.left = left
+  
   this.rows = rows
   this.columns = columns
+
+  }
+
+  
 
   this.draw = function () {
     this.sprite = document.querySelector(".blocks")
