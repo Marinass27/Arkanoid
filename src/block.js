@@ -1,12 +1,15 @@
-function Block(width, height, top, left, i, j) {
-  this.width = width
-  this.height = height
-  this.top = top
-  this.left = left
-  this.i = i;
-  this.j = j;
+
+
+class Block extends UnmovableElement {
+  constructor (width, height, top, left, i, j) {
+    super (width, height, top, left);
+    this.i = i;
+    this.j = j;
+  }
   
-  this.draw = function () {
+ 
+  
+  draw ( ) {
     this.sprite = document.querySelector(`.column${i}-${j}`)
     this.sprite.style.width = this.width + 'px'
     this.sprite.style.height = this.height + 'px'
@@ -14,7 +17,7 @@ function Block(width, height, top, left, i, j) {
     this.sprite.style.left = this.left + 'px'
   }
 
-  this.delete = function (i, j) {
+  static delete (i, j) {
     const blockToRemove = document.querySelector(`.column${i}-${j}`);
     if (blockToRemove !== null) {
       blockToRemove.classList.add('deleted-block');
