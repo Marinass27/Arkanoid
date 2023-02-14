@@ -1,22 +1,17 @@
-function BlockCollection(width, height, rows, columns, left, top) {
-
-  this.blocks = []
-  this.width = width
-  this.height = height
-  this.top = top
-  this.left = left
-  this.rows = rows
-  this.columns = columns
-
-  this.draw = function () {
-    this.sprite = document.querySelector(".blocks")
-    this.sprite.style.top = this.top + "px";
-    this.sprite.style.left = this.left + "px";
-    this.sprite.style.width = this.width + "px";
-    this.sprite.style.height = this.height + "px";
+class BlockCollection extends UnmovableElement{
+  constructor(width, height, rows, columns, left, top){
+    super (width, height, top, left);
+    this.blocks = []
+    this.rows = rows
+    this.columns = columns
   }
 
-  this.generateBlockCollection = function () {
+  draw = function () {
+    this.sprite = document.querySelector(".blocks")
+    super.draw();
+  }
+
+  generateBlockCollection = function () {
     let stringResult = '';
     for (var i = 0; i < this.rows; i++) {
       for (var j = 0; j < this.columns; j++) {
@@ -35,11 +30,11 @@ function BlockCollection(width, height, rows, columns, left, top) {
     return stringResult;
   }
 
-  this.drawAllBlocks = function () {
+  drawAllBlocks = function () {
     this.blocks.forEach(function (block) { block.draw() })
   }
 
-  this.removeBlock = function (ballTop, ballLeft, ballWidth, ballHeight) {
+  removeBlock = function (ballTop, ballLeft, ballWidth, ballHeight) {
     for (let i = 0; i < this.blocks.length; i++) {
       if (ballTop <= this.blocks[i].top + this.blocks[i].height + this.top // abajo
         && ballLeft + ballWidth >= this.blocks[i].left + this.left // izquierda
@@ -56,7 +51,7 @@ function BlockCollection(width, height, rows, columns, left, top) {
     }
   }
 
-  this.restart = function () {
+  restart = function () {
     this.blocks = [];
     blockHTML.innerHTML = blockCollectionInstance.generateBlockCollection();
     this.draw();

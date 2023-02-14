@@ -114,6 +114,11 @@ body {
   border: 3px solid white;
 }
 
+.blocks {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+}
+
 /*---------Panels that appear to give information to the player---------*/
 .life-lost {
   position: absolute;
@@ -149,6 +154,67 @@ body {
   font-weight: bold;
 }
 
+
+.victory-text {
+  margin-top: 50%;
+  display: block;
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+}
+
+.victory-score {
+  margin-top: 0;
+}
+
+
+.victory,
+.game-over {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  top: 0;
+  background-color: #57b7cc;
+  display: none;
+  animation-name: endScreen;
+  animation-duration: 1.5s;
+}
+
+.game-over {
+  background-color: black;
+}
+
+
+.invisible-text {
+  display: none;
+  color: yellow;
+}
+
+.emphasize-text {
+  color: red;
+}
+
+.black-courtain {
+  width: 0%;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  animation-name: courtain;
+  animation-duration: 1s;
+}
+
+@keyframes courtain {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0%;
+  }
+}
+
+/*----------------Platform--------------*/
 .platform {
   position: absolute;
   top: 780px;
@@ -160,6 +226,9 @@ body {
   box-sizing: border-box;
   padding: 0;
 }
+
+
+/*-----------------Eyes---------------*/
 
 .eyes {
   background-color: white;
@@ -212,40 +281,6 @@ img {
   left: 288px;
 }
 
-.victory-text {
-  margin-top: 50%;
-  display: block;
-  font-size: 24px;
-  color: white;
-  font-weight: bold;
-}
-
-.victory-score {
-  margin-top: 0;
-}
-
-.blocks {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0);
-
-}
-
-.victory,
-.game-over {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  height: 100%;
-  top: 0;
-  background-color: #57b7cc;
-  display: none;
-  animation-name: endScreen;
-  animation-duration: 1.5s;
-}
-
-.game-over {
-  background-color: black;
-}
 
 @keyframes endScreen {
   0% {
@@ -272,33 +307,6 @@ img {
 
 }
 
-.invisible-text {
-  display: none;
-  color: yellow;
-}
-
-.emphasize-text {
-  color: red;
-}
-
-.black-courtain {
-  width: 0%;
-  height: 100%;
-  background-color: black;
-  position: absolute;
-  animation-name: courtain;
-  animation-duration: 1s;
-}
-
-@keyframes courtain {
-  0% {
-    width: 100%;
-  }
-
-  100% {
-    width: 0%;
-  }
-}
 
 .deleted-block {
   animation-name: deleteBlock;

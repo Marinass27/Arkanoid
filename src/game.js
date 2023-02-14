@@ -1,11 +1,14 @@
-function Game() {
-  this.gameStatus = -1;
-  this.timerId;
-  this.score = 0;
-  this.record = 0; 
-  this.lives = 3;
+class Game {
+  constructor(){
+    this.gameStatus = -1;
+    this.timerId;
+    this.score = 0;
+    this.record = 0; 
+    this.lives = 3;
+  }
+  
 
-  this.startGame = function () {
+  startGame = function () {
     document.addEventListener('keydown', function (event) {
       
       if (event.key === 'ArrowRight') {
@@ -20,7 +23,7 @@ function Game() {
     this.timerId = setInterval(this.gameEngine,7 )
   };
 
-  this.gameOver = function () {
+  gameOver = function () {
     clearInterval(this.timerId);
     document.querySelector('.game-over').style.display = 'block'
     var finalText = document.querySelectorAll(".game-over .invisible-text");
@@ -35,7 +38,7 @@ function Game() {
 
   };
 
-  this.gameVictory = function () {
+  gameVictory = function () {
     clearInterval(this.timerId)
     
     document.querySelector('.victory').style.display = 'block'
@@ -52,21 +55,23 @@ function Game() {
     
   };
 
-  this.gameEngine = function () {
+  gameEngine = function () {
     platform.move()
     ball.move()
   }
 
-  this.restart = function (){
+  restart = function (){
     ball.restartPosition();
     platform.restartPosition();
     blockCollectionInstance.restart();
   }
-  this.restartSituation = function () {
+
+  restartSituation = function () {
     ball.restartPosition();
     platform.restartPosition();
   }
-  this.loseLife = function (){
+
+  loseLife = function (){
     if(this.lives === 0){
       this.gameStatus = 0;
       this.gameOver();
@@ -83,12 +88,12 @@ function Game() {
     }
   }
 
-  this.addPoints = function () {
+  addPoints = function () {
     this.score += 10;
     scoreHTML.innerText = this.score;
   }
 
-  this.updatePanel = function() {
+  updatePanel = function() {
     this.lives = 3;
     this.score = 0;
     scoreHTML.innerText = this.score;
@@ -96,7 +101,7 @@ function Game() {
     livesHTML.innerText = this.lives;
   }
 
-  this.isNewRecord = function (){
+  isNewRecord = function (){
     return this.score > this.record;
   }
 }
