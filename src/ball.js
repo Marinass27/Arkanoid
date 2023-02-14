@@ -1,8 +1,10 @@
 class Ball extends MovableElement{
-  constructor (width, height, top, left, speedX = -2, speedY= -1){
+  constructor (width = 25, height = 25, top = 600, left = 288, speedX = -2, speedY= -1){
     super (width, height, top, left, ".ball");
     this.speedX = speedX;
     this.speedY = speedY;
+
+    
   }
   
   
@@ -62,9 +64,8 @@ class Ball extends MovableElement{
   }
 
   move() {
+   
     if (!this.collidesWithPlatform() && !this.collidesWithLateralWalls() && !this.collidesWithTopWall() && !this.collidesWithBlocks() && !this.collidesWithBottom()) {
-
-      
       this.left += this.speedX;
       this.sprite.style.left = this.left + "px";
       this.top += this.speedY;

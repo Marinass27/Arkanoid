@@ -6,8 +6,11 @@ class Block extends UnmovableElement {
   }
   
   draw() {
-    this.sprite = document.querySelector(`.column${i}-${j}`)
-    super.draw();
+    this.sprite = document.querySelector(`.column${this.i}-${this.j}`)
+    this.sprite.style.top = this.top + "px";
+        this.sprite.style.left = this.left + "px";
+        this.sprite.style.width = this.width + "px";
+        this.sprite.style.height = this.height + "px";
   }
 
   static delete (i, j) {

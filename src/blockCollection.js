@@ -8,7 +8,10 @@ class BlockCollection extends UnmovableElement{
 
   draw = function () {
     this.sprite = document.querySelector(".blocks")
-    super.draw();
+    this.sprite.style.top = this.top + "px";
+        this.sprite.style.left = this.left + "px";
+        this.sprite.style.width = this.width + "px";
+        this.sprite.style.height = this.height + "px";
   }
 
   generateBlockCollection = function () {
@@ -42,7 +45,7 @@ class BlockCollection extends UnmovableElement{
         && ballTop + ballHeight >= this.blocks[i].top + this.top) // arriba
       { 
         game.addPoints();
-        this.blocks[i].delete(this.blocks[i].i, this.blocks[i].j);
+        Block.delete(this.blocks[i].i, this.blocks[i].j);
         if (this.blocks.length === 1){
           game.gameVictory();
         } 

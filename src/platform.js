@@ -1,6 +1,6 @@
 class Platform extends MovableElement {
 
-  constructor (width, height, top, left){
+  constructor (width = 100, height = 15, top = 780, left = 250){
     super (width, height, top, left, ".platform");
     this.direction = 0;
     this.speed = 5;
@@ -17,7 +17,7 @@ class Platform extends MovableElement {
   };
     
   restartPosition() {
-    super.restarPosition()
+    super.restartPosition()
     this.speed = 5;
   }
 }
