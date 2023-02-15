@@ -9,6 +9,11 @@ game management and user input.
 This is thanks to the fact that we made the dimensions and positions in the x,y axis of the blocks adjust to those of the container block.
 - This project helped us learn a great deal regarding intervals, game management, collisions, score count, position restart, and victory/defeat management.
 
+## How to play
+- Go to "Environments" on this page. You will see "github-pages" as active.
+- Click on "github-pages". A new tab will appear.
+- The top most element of the "Deployments / History " page will have a button with "View deployment". Click it and enjoy!
+
 ## Credits
 ### Developers:
 | Name            | GitHub account                                      | LinkedIn                                |
