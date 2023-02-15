@@ -1,12 +1,12 @@
-function Platform() {
-  this.sprite = document.querySelector(".platform");
-  this.direction = 0;
-  this.left = 250;
-  this.width = 100;
-  this.speed = 5;
-  this.top = 780;
+class Platform extends MovableElement {
 
-  this.move = function () {
+  constructor (width = 100, height = 15, top = 780, left = 250){
+    super (width, height, top, left, ".platform");
+    this.direction = 0;
+    this.speed = 5;
+  }
+    
+  move() {
     if (
       (this.direction === -1 && this.left <= this.speed) ||
       (this.direction === 1 && this.left >= 600 - this.width - this.speed)
@@ -15,12 +15,9 @@ function Platform() {
     this.left += this.direction * this.speed;
     this.sprite.style.left = this.left + "px";
   };
-  
-  this.restartPosition = function () {
-    this.top = 780;
-    this.left = 250;
-    this.sprite.style.top = this.top + 'px'
-    this.sprite.style.left = this.left + 'px'
+    
+  restartPosition() {
+    super.restartPosition()
     this.speed = 5;
   }
 }
